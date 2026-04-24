@@ -1,4 +1,7 @@
 
+using Microsoft.AspNetCore.Mvc;
+using MVC3.Models;
+using MVC3.Services;
 namespace MVC3
 {
     public class Program
@@ -6,6 +9,9 @@ namespace MVC3
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+                builder.Services.AddScoped<AuthorsService>();
+                builder.Services.AddScoped<AuthorsModel>();
 
             builder.Services.AddControllers();
 
@@ -17,6 +23,9 @@ namespace MVC3
             {
                 _ = endpoints.MapControllers();
             });
+
+
+            
 
             app.Run();
         }
